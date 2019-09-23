@@ -10,16 +10,42 @@ namespace CustomerRelationManagement
     {
         static void Main(string[] args)
         {
-            //lista med kundernas info 
+            string userinput = "";
+
+            //lista med favoriternas info 
             System.Collections.ArrayList Customers = new System.Collections.ArrayList();
 
-            //fråga om de är registrerade
-            //om inte mata in kundens information (namn, telefon nummer, email, favortier, 
+            do
+            {
+                Console.WriteLine("Registrera en ny favorit? n/j");
+                userinput = Console.ReadLine();
+                    if (userinput == "n")
+                    {
+                    break;
+                    }
 
-            Customers.Add(Console.ReadLine());
+                Console.WriteLine("Var snäll och mata in perosnens namn, efternamn, email adress och telefonnummer: ");
 
 
-            //skriv ut deras information, antalet favoriter
+                //lägger in information(objekt) Customer i listan Customers
+                Customers.Add(new Customer() { Namn = Console.ReadLine(), efterNamn = Console.ReadLine(), email = Console.ReadLine(), telefonnummer = Console.ReadLine() });
+
+
+
+            } while (userinput == "j"); //fortsätt mata in nya favoriter så länge userInput är lika med j
+
+
+            //antalet favoriter i listan?
+            int countCustomers = Customers.Count;
+            Console.WriteLine("Du har {0} favoriter", countCustomers);
+
+
+            //skriv ut favoriternas information
+            foreach (Customer c in Customers)
+            {
+                Console.WriteLine("{0} {1} {2} {3}", c.Namn, c.efterNamn, c.email, c.telefonnummer);
+            }
+
         }
     }
 }
