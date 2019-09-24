@@ -19,46 +19,27 @@ namespace WinForms0923
         {
             InitializeComponent();
 
-            string userinput = "";
-
-            
-
-            do
-            {
-                Console.WriteLine("Registrera en ny favorit? n/j");
-                userinput = Console.ReadLine();
-                if (userinput == "n")
-                {
-                    break;
-                }
-
-                Console.WriteLine("Var snäll och mata in perosnens namn, efternamn, email adress och telefonnummer: ");
-
-
-                //lägger in information(objekt) Customer i listan Customers
-                Customers.Add(new Customer() { Namn = Console.ReadLine(), efterNamn = Console.ReadLine(), email = Console.ReadLine(), telefonnummer = Console.ReadLine() });
-
-
-
-            } while (userinput == "j"); //fortsätt mata in nya favoriter så länge userInput är lika med j
-
-
-            //antalet favoriter i listan?
-            int countCustomers = Customers.Count;
-            Console.WriteLine("Du har {0} favoriter", countCustomers);
-
-
-            //skriv ut favoriternas information
-            foreach (Customer c in Customers)
-            {
-                Console.WriteLine("{0} {1} {2} {3}", c.Namn, c.efterNamn, c.email, c.telefonnummer);
-            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
 
-            Customers.Add(new Customer() { Namn = textBox1.Text, efterNamn = textBox2.Text });
+            Customers.Add(new Customer() { Namn = textBox1.Text, efterNamn = textBox2.Text, email = textBox3.Text, telefonnummer = textBox4.Text });
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+            listBox1.Items.Clear();
+
+            foreach(Customer c in Customers)
+            {
+                listBox1.Items.Add(c.Namn);
+                listBox1.Items.Add(c.efterNamn);
+                listBox1.Items.Add(c.email);
+                listBox1.Items.Add(c.telefonnummer);
+            }
 
         }
     }
