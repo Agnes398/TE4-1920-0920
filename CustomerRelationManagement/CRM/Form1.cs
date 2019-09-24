@@ -15,6 +15,18 @@ namespace CRM
         public Form1()
         {
             InitializeComponent();
+
+            button1.Text = "Add contact";
+            button2.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Customers.Add();
+
+            textBox1.Text = "";
+            textBox2.Text = "";
+
         }
     }
 }
